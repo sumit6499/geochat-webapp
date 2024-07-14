@@ -4,6 +4,10 @@ import "./globals.css";
 import {SocketProvider} from '@/context/SocketProvider'
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/context/ThemeProvider"
+import {
+  ClerkProvider,
+} from '@clerk/nextjs'
+import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"], variable:"--font-sans" });
 
@@ -17,8 +21,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <html lang="en" >
+      <ClerkProvider >
         <SocketProvider>
           <ThemeProvider
               attribute="class"
@@ -32,6 +39,7 @@ export default function RootLayout({
               </body>
           </ThemeProvider>
         </SocketProvider>
+      </ClerkProvider>
     </html>
   );
 }

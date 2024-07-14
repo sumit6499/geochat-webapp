@@ -1,5 +1,4 @@
 
-import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import BlurFade from '@/components/magicui/blur-fade'
@@ -24,11 +23,11 @@ export default function Home() {
                   </p>
                   <div className="mt-6 space-x-6">
                       <Link 
-                        href={'/chat'}
+                        href={'/chats'}
                         >
-                        <Button className="ml-2">
-                          Start Chatting
-                        </Button>
+                            <Button className="ml-2">
+                              Start Chatting
+                            </Button>
                       </Link>
                   </div>
                 </div>

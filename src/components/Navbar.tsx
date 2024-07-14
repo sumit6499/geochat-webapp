@@ -1,9 +1,8 @@
 import React from 'react'
-import Image from 'next/image'
-import location from '@/assets/location.png'
 import Link from 'next/link'
 import {ModeToggle} from '@/components/ToggleTheme'
 import {Menu,LocateIcon} from 'lucide-react'
+import {SignedIn, SignedOut, SignInButton, UserButton} from '@clerk/nextjs'
 
 import {
     Sheet,
@@ -13,6 +12,7 @@ import {
     SheetTitle,
     SheetTrigger,
   } from "@/components/ui/sheet"
+import { Button } from './ui/button'
   
 
 const Navbar = () => {
@@ -27,7 +27,18 @@ const Navbar = () => {
             </h4>
         </div>
 
-        <div className="mobile-nav block sm:invisible ml-auto ">
+
+        <div className="mobile-nav flex sm:invisible ml-auto gap-2">
+        <nav className='flex sm:hidden'>
+          <SignedIn>
+              <UserButton />
+          </SignedIn>
+          <SignedOut>
+              <Button>
+                <SignInButton />
+              </Button>
+          </SignedOut>
+        </nav>
 
             <Sheet >
                 <SheetTrigger >
@@ -57,6 +68,7 @@ const Navbar = () => {
                             <Link href={'/contact'} className=' p-3 rounded-lg'>
                                 Contact
                             </Link>
+                                  
                         </SheetDescription>
                         </SheetHeader>
                 </SheetContent>
@@ -64,8 +76,9 @@ const Navbar = () => {
         </div>
 
 
-        <nav className="ml-auto hidden sm:flex gap-4 sm:gap-6 items-center">
         
+
+        <nav className={`ml-auto hidden sm:flex gap-4 sm:gap-6 items-center`}>
         <ModeToggle/>
           <Link href="/feature" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             Features
@@ -79,7 +92,18 @@ const Navbar = () => {
           <Link href="/contact" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             Contact
           </Link>
+              <SignedIn>
+                  <UserButton />
+              </SignedIn>
+              <SignedOut>
+                  <Button>
+                    <SignInButton />
+                  </Button>
+              </SignedOut>
+             
         </nav>
+
+        
     </header>
   )
 }
