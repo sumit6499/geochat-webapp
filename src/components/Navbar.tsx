@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 import {ModeToggle} from '@/components/ToggleTheme'
 import {Menu,LocateIcon} from 'lucide-react'
-import {SignedIn, SignedOut, SignInButton, UserButton} from '@clerk/nextjs'
 
 import {
     Sheet,
@@ -30,14 +29,9 @@ const Navbar = () => {
 
         <div className="mobile-nav flex sm:invisible ml-auto gap-2">
         <nav className='flex sm:hidden'>
-          <SignedIn>
-              <UserButton />
-          </SignedIn>
-          <SignedOut>
               <Button>
-                <SignInButton />
+                Sign In
               </Button>
-          </SignedOut>
         </nav>
 
             <Sheet >
@@ -92,14 +86,9 @@ const Navbar = () => {
           <Link href="/contact" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             Contact
           </Link>
-              <SignedIn>
-                  <UserButton />
-              </SignedIn>
-              <SignedOut>
                   <Button>
-                    <SignInButton />
+                    Sign In
                   </Button>
-              </SignedOut>
              
         </nav>
 

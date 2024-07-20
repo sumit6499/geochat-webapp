@@ -4,10 +4,6 @@ import "./globals.css";
 import {SocketProvider} from '@/context/SocketProvider'
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/context/ThemeProvider"
-import {
-  ClerkProvider,
-} from '@clerk/nextjs'
-import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"], variable:"--font-sans" });
 
@@ -16,7 +12,7 @@ export const metadata: Metadata = {
   description: "Webapp to connect chat webapp on location",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -24,8 +20,7 @@ export default function RootLayout({
 
 
   return (
-    <html lang="en" >
-      <ClerkProvider >
+    <html lang="en" suppressHydrationWarning>
         <SocketProvider>
           <ThemeProvider
               attribute="class"
@@ -39,7 +34,6 @@ export default function RootLayout({
               </body>
           </ThemeProvider>
         </SocketProvider>
-      </ClerkProvider>
     </html>
   );
 }
