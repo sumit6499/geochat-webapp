@@ -20,7 +20,7 @@ const Chats = () => {
           },{
             enableHighAccuracy:true,
           })
-        },5000)
+        },7000)
         
         return ()=>{
           clearInterval(intervalId)
@@ -42,6 +42,9 @@ const Chats = () => {
       <div className="msg">
         {socket?.messages.map((msg,index)=>(
             <p key={index}>{msg}</p>
+        ))}
+        {socket?.nearbyUsers.map((user)=>(
+          <p key={user}>{user}</p>
         ))}
       </div>
     </div>
