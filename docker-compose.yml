@@ -1,0 +1,27 @@
+version: '1:0:0'
+
+services:
+  web:
+    build: client/
+    ports:
+      - 3000:3000
+    depends_on:
+      - api
+  
+  api:
+    build: server/
+    ports:
+      - 8000:8000
+    depends_on:
+      - redis
+      - postgres
+
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    
+  postgres:
+    image: postgres:alpine
+    ports:
+      - 5432:5432
